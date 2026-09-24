@@ -8,6 +8,10 @@ $env:GRADLE_USER_HOME = "d:\.gradle"
 
 Set-Location -Path "$PSScriptRoot\frontend"
 Write-Host "`n1. Building Frontend Assets (npm run build)..." -ForegroundColor Yellow
+if (-not $env:VITE_API_URL) {
+    $env:VITE_API_URL = "https://product-review-gnmx.onrender.com/api/v1"
+}
+Write-Host "   Using Backend API URL: $env:VITE_API_URL" -ForegroundColor Cyan
 npm run build
 
 Write-Host "`n2. Syncing Capacitor Android Project..." -ForegroundColor Yellow

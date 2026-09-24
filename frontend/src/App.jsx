@@ -8,6 +8,8 @@ import HomePage from './pages/HomePage';
 import ReportPage from './pages/ReportPage';
 import { useAnalysis } from './hooks/useAnalysis';
 
+import MobileBottomNav from './components/MobileBottomNav';
+
 function App() {
   const {
     status,
@@ -141,6 +143,11 @@ function App() {
       )}
 
       <Footer />
+      <MobileBottomNav
+        activeTab={activeNavTab}
+        onNavigate={handleNavigate}
+        onUploadImage={startAnalysis}
+      />
     </>
   );
 }

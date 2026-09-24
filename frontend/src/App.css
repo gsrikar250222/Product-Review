@@ -4067,3 +4067,537 @@ button {
   }
 }
 
+/* ═══════════════════════════════════════════════════════════
+   COMPREHENSIVE MOBILE APP RESPONSIVE SYSTEM (Capacitor & Web)
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 1. Global Mobile Fixes & Safe Area Insets ── */
+html, body, #root {
+  overflow-x: hidden !important;
+  width: 100% !important;
+  max-width: 100vw !important;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── 2. Native Mobile Bottom Navigation Bar ── */
+.mobile-bottom-nav {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    padding-bottom: calc(72px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+
+  .mobile-bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(60px + env(safe-area-inset-bottom, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    background: rgba(9, 13, 24, 0.94);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 8px;
+    padding-right: 8px;
+    z-index: 9999;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.6);
+  }
+
+  .mobile-nav-item {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+    padding: 6px 10px;
+    gap: 3px;
+    position: relative;
+    transition: all 0.2s ease;
+    flex: 1;
+    min-height: 48px;
+  }
+
+  .mobile-nav-item.active {
+    color: #a855f7;
+  }
+
+  .mobile-nav-item.active .mobile-nav-icon svg {
+    stroke: #c084fc;
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.6));
+  }
+
+  .mobile-nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 22px;
+  }
+
+  .mobile-nav-label {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+  }
+
+  .mobile-nav-indicator {
+    position: absolute;
+    top: 2px;
+    width: 16px;
+    height: 3px;
+    border-radius: 9999px;
+    background: #a855f7;
+    box-shadow: 0 0 8px #a855f7;
+  }
+
+  /* Center Floating Scan Button */
+  .mobile-nav-action-btn {
+    background: transparent;
+    border: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: -24px;
+    flex: 1;
+    cursor: pointer;
+  }
+
+  .mobile-action-icon-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2563eb, #8b5cf6, #ec4899);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(139, 92, 246, 0.6);
+    border: 3px solid #090d18;
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-nav-action-btn:active .mobile-action-icon-circle {
+    transform: scale(0.92);
+  }
+
+  .mobile-action-label {
+    font-size: 9px;
+    font-weight: 700;
+    color: #cbd5e1;
+    margin-top: 4px;
+    letter-spacing: -0.01em;
+  }
+
+  /* ── 3. Header Mobile Optimizations ── */
+  .header {
+    padding: 0 14px !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+  }
+  .header-inner {
+    height: 56px !important;
+  }
+  .header-nav {
+    display: none !important;
+  }
+  .header-mission-badge {
+    display: none !important;
+  }
+  .logo-tagline {
+    display: none !important;
+  }
+  .logo-text {
+    font-size: 19px !important;
+  }
+  .logo-icon-wrap {
+    width: 26px !important;
+    height: 26px !important;
+  }
+  .logo-icon-wrap svg {
+    width: 24px;
+    height: 24px;
+  }
+  .header-search-form {
+    display: none !important;
+  }
+  .user-profile-pill .user-name,
+  .user-profile-pill svg {
+    display: none !important;
+  }
+  .user-profile-pill {
+    padding: 4px !important;
+    border-radius: 50% !important;
+  }
+  .user-avatar-initial {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 12px !important;
+  }
+
+  /* ── 4. Hero Section Mobile Fit ── */
+  .hero-section {
+    padding: 24px 14px 32px 14px !important;
+    overflow: hidden !important;
+  }
+  .hero-container {
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  .hero-left {
+    align-items: center !important;
+  }
+  .hero-badge {
+    margin: 0 auto 16px auto !important;
+    font-size: 11px !important;
+    padding: 5px 12px !important;
+  }
+  .hero-title {
+    font-size: 32px !important;
+    line-height: 1.15 !important;
+    margin-bottom: 14px !important;
+    letter-spacing: -0.02em !important;
+  }
+  .hero-subtitle {
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    margin: 0 auto 20px auto !important;
+    max-width: 100% !important;
+  }
+  .hero-actions {
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 12px !important;
+    align-items: stretch !important;
+  }
+  .btn-upload-primary {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 14px 20px !important;
+    font-size: 15px !important;
+  }
+  .btn-watch-demo {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px 20px !important;
+  }
+  .hero-social-proof {
+    justify-content: center !important;
+    margin-top: 20px !important;
+  }
+
+  /* Mockup Showcase Responsive */
+  .mockup-showcase {
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    gap: 16px !important;
+  }
+  .floating-products-stream {
+    flex-direction: row !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    overflow-x: auto !important;
+    width: 100% !important;
+    padding: 4px 0 !important;
+  }
+  .floating-product-card {
+    width: 52px !important;
+    height: 52px !important;
+    border-radius: 12px !important;
+    flex-shrink: 0 !important;
+  }
+  .phone-wrapper {
+    width: 210px !important;
+    height: 390px !important;
+    border-radius: 32px !important;
+    border-width: 3px !important;
+  }
+  .flow-arrow-wrap {
+    display: none !important;
+  }
+  .identified-product-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+    position: relative !important;
+  }
+  .identified-product-img {
+    position: static !important;
+    width: 72px !important;
+    height: 72px !important;
+    margin: 0 auto 10px auto !important;
+  }
+  .identified-name {
+    font-size: 16px !important;
+    text-align: center !important;
+  }
+  .identified-category {
+    text-align: center !important;
+    max-width: 100% !important;
+  }
+  .identified-rating-row {
+    justify-content: center !important;
+  }
+  .stores-price-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 6px !important;
+  }
+  .store-price-pill {
+    padding: 8px 4px !important;
+  }
+
+  /* ── 5. Features Grid & Stats Mobile ── */
+  .features-strip-section {
+    padding: 30px 14px !important;
+  }
+  .features-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  .feature-step-card {
+    padding: 16px !important;
+  }
+  .stats-strip-section {
+    padding: 0 14px 30px 14px !important;
+  }
+  .stats-strip-card {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+    padding: 16px !important;
+  }
+  .stat-item {
+    flex-direction: column !important;
+    text-align: center !important;
+    gap: 6px !important;
+  }
+  .stat-number {
+    font-size: 20px !important;
+  }
+  .stat-label {
+    font-size: 11px !important;
+  }
+
+  /* ── 6. Analyzing Dashboard Mobile ── */
+  .analyzing-page-wrap {
+    padding: 16px 12px 80px 12px !important;
+  }
+  .analyzing-container {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    max-width: 100% !important;
+  }
+  .analyzing-left-card {
+    width: 100% !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+  .uploaded-image-frame {
+    height: 190px !important;
+  }
+  .analyzing-thumbnails-row {
+    justify-content: center !important;
+  }
+  .analyzing-right-col {
+    width: 100% !important;
+  }
+  .analyzing-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+  .analyzing-metric-cards {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .pipeline-step-item {
+    padding: 10px 12px !important;
+  }
+
+  /* ── 7. Candidate Selector Mobile ── */
+  .candidate-selector-wrapper {
+    padding: 20px 12px 80px 12px !important;
+  }
+  .candidate-heading {
+    font-size: 22px !important;
+  }
+  .candidate-quick-pick-banner {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    padding: 14px !important;
+  }
+  .btn-view-quick-colgate {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+  .candidates-modern-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .modern-candidate-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* ── 8. Product Report Page Mobile ── */
+  .product-report-page {
+    padding: 14px 10px 90px 10px !important;
+    max-width: 100% !important;
+  }
+  .report-max-width {
+    max-width: 100% !important;
+  }
+  .breadcrumb-nav {
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    padding-bottom: 6px !important;
+    font-size: 11px !important;
+    margin-bottom: 12px !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+  .breadcrumb-nav::-webkit-scrollbar {
+    display: none;
+  }
+  .product-hero-card {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    padding: 16px 12px !important;
+    border-radius: 18px !important;
+  }
+  .gallery-main-viewport {
+    height: 220px !important;
+  }
+  .gallery-thumbnails-wrap {
+    justify-content: center !important;
+  }
+  .product-title-bold {
+    font-size: 17px !important;
+    line-height: 1.3 !important;
+  }
+  .product-meta-row {
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+  }
+  .product-actions-section {
+    grid-column: span 1 !important;
+    width: 100% !important;
+    gap: 10px !important;
+  }
+  .btn-view-detailed-insights,
+  .btn-view-amazon,
+  .btn-compare-prices-purple {
+    width: 100% !important;
+    justify-content: center !important;
+    padding: 12px !important;
+  }
+  .best-price-highlight-card {
+    width: 100% !important;
+    box-sizing: border-box !important;
+    padding: 14px !important;
+  }
+  .best-price-value-row {
+    flex-wrap: wrap !important;
+    gap: 6px !important;
+  }
+
+  /* Horizontal Scrollable Subnav Tabs */
+  .report-subnav-bar {
+    display: flex !important;
+    overflow-x: auto !important;
+    white-space: nowrap !important;
+    -webkit-overflow-scrolling: touch !important;
+    gap: 8px !important;
+    padding: 8px 4px !important;
+    scrollbar-width: none !important;
+  }
+  .report-subnav-bar::-webkit-scrollbar {
+    display: none !important;
+  }
+  .subnav-tab-btn {
+    flex-shrink: 0 !important;
+    padding: 8px 14px !important;
+    font-size: 12px !important;
+  }
+
+  /* Single Column Stacking for 3-Column Report */
+  .report-three-columns-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+  }
+  .col-overview,
+  .col-reviews-sentiment,
+  .col-pricing-specs {
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+  .product-feature-pills-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .price-comparison-stores-grid {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+  .themes-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .conflict-card {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .star-distribution-card,
+  .sentiment-gauge-card,
+  .specifications-table-card,
+  .pros-cons-card {
+    padding: 16px 12px !important;
+    border-radius: 16px !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+  .review-cards-list {
+    gap: 10px !important;
+  }
+  .review-item-card {
+    padding: 14px 12px !important;
+    border-radius: 14px !important;
+  }
+
+  /* ── 9. Footer Compact on Mobile ── */
+  .footer {
+    padding: 24px 14px !important;
+    margin-bottom: 60px !important;
+    text-align: center !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .hero-title {
+    font-size: 27px !important;
+  }
+  .phone-wrapper {
+    width: 185px !important;
+    height: 350px !important;
+  }
+  .stats-strip-card {
+    grid-template-columns: 1fr !important;
+  }
+  .stores-price-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+
