@@ -1,0 +1,12 @@
+{
+  "appId": "com.reviewly.app",
+  "appName": "Reviewly",
+  "webDir": "dist",
+  "server": {
+    "cleartext": true,
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+}

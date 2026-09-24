@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Reviewly</string>
+    <string name="title_activity_main">Reviewly</string>
+    <string name="package_name">com.reviewly.app</string>
+    <string name="custom_url_scheme">com.reviewly.app</string>
+</resources>
