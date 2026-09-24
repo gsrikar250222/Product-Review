@@ -53,16 +53,19 @@ export default function CameraCaptureModal({ isOpen, onClose, onCapture }) {
     }
 
     try {
-      const constraints = {
-        video: {
-          facingMode: { ideal: mode },
-          width: { ideal: 1920 },
-          height: { ideal: 1080 },
-        },
-        audio: false,
-      };
+      let stream;
+      try {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: { facingMode: { ideal: mode } },
+          audio: false,
+        });
+      } catch (err1) {
+        stream = await navigator.mediaDevices.getUserMedia({
+          video: true,
+          audio: false,
+        });
+      }
 
-      const stream = await navigator.mediaDevices.getUserMedia(constraints);
       streamRef.current = stream;
 
       if (videoRef.current) {
@@ -75,9 +78,9 @@ export default function CameraCaptureModal({ isOpen, onClose, onCapture }) {
     } catch (err) {
       console.warn('Camera stream error:', err);
       if (err.name === 'NotAllowedError' || err.name === 'PermissionDeniedError') {
-        setCameraError('Camera access denied. Please grant permission in your browser or device settings.');
+        setCameraError('Camera access was not granted. Tap below to launch your device camera.');
       } else {
-        setCameraError('Unable to access live camera stream. You can still snap photos using the native camera.');
+        setCameraError('Tap below to take a photo using your device camera.');
       }
     }
   };

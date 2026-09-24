@@ -23,9 +23,9 @@ const DEFAULT_COLGATE_DATA = {
   ],
   images: [
     '/assets/colgate_pack.jpg',
-    '/assets/colgate_pack.jpg',
-    '/assets/colgate_pack.jpg',
-    '/assets/colgate_pack.jpg',
+    '/assets/colgate_tube.jpg',
+    '/assets/colgate_texture.jpg',
+    '/assets/colgate_box.jpg',
   ],
   featurePills: [
     { icon: '❄️', title: 'Cooling Crystals', desc: 'Long lasting freshness' },
