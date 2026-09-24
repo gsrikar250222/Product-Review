@@ -1,10 +1,14 @@
 import React, { useRef } from 'react';
 
-export default function MobileBottomNav({ activeTab, onNavigate, onUploadImage }) {
+export default function MobileBottomNav({ activeTab, onNavigate, onUploadImage, onOpenCamera }) {
   const fileInputRef = useRef(null);
 
   const handleScanClick = () => {
-    fileInputRef.current?.click();
+    if (onOpenCamera) {
+      onOpenCamera();
+    } else {
+      fileInputRef.current?.click();
+    }
   };
 
   const handleFileChange = (e) => {

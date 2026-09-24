@@ -1,12 +1,13 @@
 import React from 'react';
 import HeroUpload from '../components/HeroUpload';
 
-export default function HomePage({ onUpload, onTestAnalyzing, isProcessing }) {
+export default function HomePage({ onUpload, onOpenCamera, onTestAnalyzing, isProcessing }) {
   return (
     <div className="home-page-wrap">
       {/* Hero Section */}
       <HeroUpload
         onUpload={onUpload}
+        onOpenCamera={onOpenCamera}
         onTestAnalyzing={onTestAnalyzing}
         isProcessing={isProcessing}
       />

@@ -1,6 +1,6 @@
 import React, { useState, useRef } from 'react';
 
-export default function Header({ activeTab = 'Home', onNavigate, onSearch, onUploadImage }) {
+export default function Header({ activeTab = 'Home', onNavigate, onSearch, onUploadImage, onOpenCamera }) {
   const [searchQuery, setSearchQuery] = useState('');
   const fileInputRef = useRef(null);
 
@@ -12,7 +12,11 @@ export default function Header({ activeTab = 'Home', onNavigate, onSearch, onUpl
   };
 
   const handleCameraClick = () => {
-    fileInputRef.current?.click();
+    if (onOpenCamera) {
+      onOpenCamera();
+    } else {
+      fileInputRef.current?.click();
+    }
   };
 
   const handleFileChange = (e) => {

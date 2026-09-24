@@ -1,6 +1,6 @@
 import React, { useRef, useState, useCallback } from 'react';
 
-export default function HeroUpload({ onUpload, onTestAnalyzing, isProcessing }) {
+export default function HeroUpload({ onUpload, onOpenCamera, onTestAnalyzing, isProcessing }) {
   const fileInputRef = useRef(null);
   const [dragOver, setDragOver] = useState(false);
   const [showDemoModal, setShowDemoModal] = useState(false);
@@ -102,15 +102,30 @@ export default function HeroUpload({ onUpload, onTestAnalyzing, isProcessing }) 
           <div className="hero-actions">
             <button
               className="btn-upload-primary"
-              onClick={triggerUpload}
+              onClick={onOpenCamera || triggerUpload}
               disabled={isProcessing}
+              title="Click directly with camera"
             >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
                 <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
                 <circle cx="12" cy="13" r="4" />
               </svg>
-              <span>Upload Product Image</span>
-              <span className="btn-arrow">→</span>
+              <span>Take Photo / Scan</span>
+              <span className="btn-arrow">📸</span>
+            </button>
+
+            <button
+              className="btn-take-photo-camera"
+              onClick={triggerUpload}
+              disabled={isProcessing}
+              title="Upload existing image from gallery"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="17 8 12 3 7 8" />
+                <line x1="12" y1="3" x2="12" y2="15" />
+              </svg>
+              <span>Choose Photo</span>
             </button>
 
             <button
@@ -201,7 +216,7 @@ export default function HeroUpload({ onUpload, onTestAnalyzing, isProcessing }) 
             </div>
 
             {/* Center: Smartphone Frame with Live Viewfinder */}
-            <div className="phone-wrapper" onClick={triggerUpload}>
+            <div className="phone-wrapper" onClick={onOpenCamera || triggerUpload} title="Click to open camera">
               <div className="phone-body">
                 {/* Speaker Island */}
                 <div className="phone-notch">

@@ -9,6 +9,7 @@ import ReportPage from './pages/ReportPage';
 import { useAnalysis } from './hooks/useAnalysis';
 
 import MobileBottomNav from './components/MobileBottomNav';
+import CameraCaptureModal from './components/CameraCaptureModal';
 
 function App() {
   const {
@@ -27,6 +28,7 @@ function App() {
   const [activeNavTab, setActiveNavTab] = useState('Home');
   const [reportSubTab, setReportSubTab] = useState('Overview');
   const [demoAnalyzing, setDemoAnalyzing] = useState(false);
+  const [isCameraOpen, setIsCameraOpen] = useState(false);
 
   // Handle header navigation
   const handleNavigate = (tab) => {
@@ -66,6 +68,7 @@ function App() {
         onNavigate={handleNavigate}
         onSearch={handleSearch}
         onUploadImage={startAnalysis}
+        onOpenCamera={() => setIsCameraOpen(true)}
       />
 
       {/* Processing State — Dedicated Analyzing Dashboard */}
@@ -85,6 +88,7 @@ function App() {
       {status === 'idle' && !demoAnalyzing && activeNavTab === 'Home' && (
         <HomePage
           onUpload={startAnalysis}
+          onOpenCamera={() => setIsCameraOpen(true)}
           onTestAnalyzing={() => setDemoAnalyzing(true)}
           onViewReviews={() => handleNavigate('Reviews')}
           isProcessing={false}
@@ -147,6 +151,17 @@ function App() {
         activeTab={activeNavTab}
         onNavigate={handleNavigate}
         onUploadImage={startAnalysis}
+        onOpenCamera={() => setIsCameraOpen(true)}
+      />
+
+      {/* Live In-App Camera Object Scanner Modal */}
+      <CameraCaptureModal
+        isOpen={isCameraOpen}
+        onClose={() => setIsCameraOpen(false)}
+        onCapture={(file) => {
+          setIsCameraOpen(false);
+          startAnalysis(file);
+        }}
       />
     </>
   );
