@@ -3,7 +3,8 @@
  * API keys are NEVER stored or sent from the frontend.
  */
 
-const API_BASE = 'http://localhost:8000/api/v1';
+const API_BASE = import.meta.env.VITE_API_URL
+  || 'https://product-review-gnmx.onrender.com/api/v1';
 
 export async function analyzeImage(file) {
   const formData = new FormData();
